@@ -2,7 +2,7 @@
 
 ## Original Argument Collection
 ### Objective
-The goal is to generate alternative and more convincing arguments for veganism by leveraging GPT-4. The approach involves creating concise and detailed versions of given arguments, refining the content to be more persuasive and nuanced.
+The goal is to generate alternative and more or less convincing arguments for veganism by leveraging GPT-4. The approach involves first creating concise and versions of given arguments and then expanding them into more detailled versions again to generate multiple versions.
 
 ### Model and Settings
 - **Model Used**: GPT-4-0613
@@ -21,7 +21,7 @@ The goal is to generate alternative and more convincing arguments for veganism b
 
 2. **Generating Concise Arguments**:
    - For each argument, a prompt is created asking GPT-4 to generate a concise, more convincing version of the argument, ideally between 150-180 characters long.
-   - Example Prompt:
+   - Summary Prompt:
      ```
      Consider the following argument for veganism and write a condensed version of the argument that is more convincing and is approximately 150-180 characters long.
      Original Argument: [original_argument]
@@ -31,7 +31,7 @@ The goal is to generate alternative and more convincing arguments for veganism b
 
 3. **Generating Detailed Arguments**:
    - A second prompt is crafted for each concise argument to generate a more detailed, elaborative version, aimed to be between 270-280 characters long.
-   - Example Prompt:
+   - Expansion Prompt:
      ```
      You are an advocate of veganism, providing more detailed versions of arguments for the cause to be able to use them in a survey to find the most convincing arguments.
      Consider the following argument for veganism and write a more elaborate version of the argument that is more convincing and is 270-280 characters long.
@@ -44,15 +44,15 @@ The goal is to generate alternative and more convincing arguments for veganism b
    - An alternative version of this prompt asks for `... a more elaborate version of the argument that is less convincing and is 270-280 characters long...`
    - Multiple versions of the detailed argument are generated from each summary:
      - Two summaries of each manually collected argument are used to generate 5 new, more convincing arguments each.
-     - Two summaries of each GPT-based argument are used to generate 5 new, more convincing arguments each.
      - One summary of each manually collected argument is used to generate 3 new, less convincing arguments each.
-   - This leads to a total of $93 \times 2 \times 5 + 10 \times 2 \times 5 + 93 \times 1 \times 3 = 1309$ arguments in our collection.
+     - Two summaries of each GPT-based argument are used to generate 5 new, more convincing arguments each.
+   - This leads to a total of $93 \times 2 \times 5 + 93 \times 1 \times 3 + 10 \times 2 \times 5  = 1309$ arguments in our collection.
 
 4. **Processing the Output**:
    - After generating the new arguments, some formatting adjustments are made to ensure consistency.
 
 5. **Storing and Saving Results**:
-   - The original arguments, their concise summaries, and the detailed versions are stored in a `Original_Argument_Collection.xslx` and exported to an Excel file for further analysis.
+   - The original arguments, their concise summaries, and the detailed versions are stored in a `Original_Argument_Collection.xslx` for further analysis.
    - The DataFrame columns include:
      - `Original`: The original argument from the input data.
      - `Summary`: The condensed version of the argument.
@@ -64,17 +64,17 @@ The goal is to generate alternative and more convincing arguments for veganism b
    "Battery farms consist of huge, windowless sheds housing thousands of hens who are crammed four or five at a time into small wire cages stacked on top of each other in rows. Each hen may have as little as 430 cm² of space: too small to spread even one wing. Battery farms exist across the world, and the majority of egg-laying hens in the US are battery, despite bans in some states. In the EU, barren battery cages are banned in favour of ‘enriched’ cages, though these only provide 600 cm² of usable space: less than an A4 size of paper. Meanwhile, some farms have been known to break the ban and still use the older, smaller cages."
 
 2. **Concise Argument**: 
-   - Prompt Output: "Imagine living your life inside a space smaller than an A4 paper, unable to stretch. That's the reality for the majority of egg-laying hens. Choose veganism."
+   - Concise Summary: "Imagine living your life inside a space smaller than an A4 paper, unable to stretch. That's the reality for the majority of egg-laying hens. Choose veganism."
 
 3. **Detailed Argument**: 
-   - Prompt Output: "Picture a life within confines smaller than a sheet of A4 paper, never being able to stretch or move freely. This suffocating reality is the grim daily life for countless egg-laying hens. Embrace veganism to end this tragic treatment of sentient beings."
+   - Expanded Argument: "Picture a life within confines smaller than a sheet of A4 paper, never being able to stretch or move freely. This suffocating reality is the grim daily life for countless egg-laying hens. Embrace veganism to end this tragic treatment of sentient beings."
 
 
 ______________________________________________
 ## Argument Collection for Validation Studies 1 & 2
 ### Objective
 
-The goal was to generate a new set of persuasive arguments for veganism using synthesis and modification techniques. This was done by leveraging the 45 best-performing arguments from our previously established collection of 1309 arguments, selected based on their Bradley-Terry scores from the initial survey experiment.
+The goal was to generate a new set of persuasive arguments for veganism using synthesis and modification techniques. This was done by leveraging the 45 best-performing arguments from our previously established collection of 1309 arguments, selected based on their Bradley-Terry scores from the initial survey experiment (see `1_argument_evaluation.ipynb`).
 
 ### Methodology
  Selection of Proto-Arguments:
@@ -149,9 +149,9 @@ Generation Approaches:
     - Only return the changed, new argument.
     ```
 
-    Filtering and Selection:
-        - Generated arguments were filtered through rejection sampling to ensure they had the desired topic loadings and predicted persuasiveness scores higher than their respective proto-arguments.
-        - From these filtered arguments, the top 30 distinct synthesis arguments and the top 15 distinct stronger emphasis arguments were selected based on their predicted persuasiveness scores.
+   Filtering and Selection:
+      - Generated arguments were filtered through rejection sampling to ensure they had the desired topic loadings and predicted persuasiveness scores higher than their respective proto-arguments.
+      - From these filtered arguments, the top 30 distinct synthesis arguments and the top 15 distinct stronger emphasis arguments were selected based on their predicted persuasiveness scores.
 
 3. **GPT-Best Arguments:**
     - An additional set of 10 arguments was generated by prompting GPT-4 to produce its “most persuasive” pro-veganism arguments.
@@ -254,14 +254,13 @@ The objective of this validation study was to evaluate the average effects of mo
      ```
 
 4. **Filtering and Selection of Modified Arguments:**
-   - From the rewritten arguments, a selection process was undertaken:
-     - **Increased Presence**: 80 arguments were curated from the modified set with increased Topic (2) presence.
-     - **Decreased Presence**: 20 arguments were curated from the modified set with decreased Topic (2) presence.
-   - These 100 modified arguments were combined with the original 100 high Topic (2) loading arguments, forming a set of 200 arguments used for the validation study.
+   - The rewritten arguments were filtered based on their inferred topic loadings and predicted persuasiveness scores before we selected:
+     - **Increased Presence**: 80 distinct arguments curated from the modified set with increased Topic (2) presence.
+     - **Decreased Presence**: 20 distinct arguments curated from the modified set with decreased Topic (2) presence.
+   - These 100 modified arguments were combined with the original 20 high and 80 low Topic (2) loading arguments, forming a set of 200 arguments used for the validation study.
 
 5. **Final Argument Set:**
    - The final collection for Validation Study 3 is stored in `Validation_Study3_Arguments.xlsx`:
      - 100 original arguments with high Topic (2) loading.
      - 80 modified arguments with increased Topic (2) presence.
      - 20 modified arguments with decreased Topic (2) presence.
-
