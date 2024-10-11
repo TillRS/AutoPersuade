@@ -1,10 +1,11 @@
 # AutoPersuade
 
 ## Introduction 
-This repository contains the code required to reproduce the main results of *AutoPersuade: A Framework for Evaluating and Explaining Persuasive Arguments* ([Link to paper]). The necessary data can be accessed at [Link to data].
+This repository contains the code required to reproduce the main results of *AutoPersuade: A Framework for Evaluating and Explaining Persuasive Arguments* ([Link to paper]).
 
 ## Installation
-The required Python environment is specified in `autpersuade_env.yml`. Please note that the environment requires the manual installation of the custom `sun_topicmodel` package, which will be available via Conda or Pip soon. Until then, follow these steps:
+The required Python environment is specified in `autpersuade_env.yml`. Please note that the environment requires the manual installation of the custom `sun_topicmodel` package, which will be available via Conda or Pip soon. 
+Until then, follow these steps:
 
 1. Clone the `sun_topicmodel` repository:  
    ```bash
