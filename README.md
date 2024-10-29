@@ -3,20 +3,13 @@
 ## Introduction 
 This repository contains the code required to reproduce the main results of *AutoPersuade: A Framework for Evaluating and Explaining Persuasive Arguments* (Preprint available here: https://arxiv.org/abs/2410.08917).
 
-## Installation
-The required Python environment is specified in `autpersuade_env.yml`. Please note that the environment requires the manual installation of the custom `sun_topicmodel` package, which will be available via Conda or Pip soon. 
-Until then, follow these steps to use the current version (https://github.com/TillRS/SUN_TopicModel):
+## Setup
+The required Python environment is specified in `autpersuade_env.yml`. This includes the implementation of the SUpervised semi-nonnegative matrix factorization Topic Model in the `suntm` package, which is available via `pip` or directly from https://github.com/TillRS/SUN_TopicModel.
 
-1. Clone the `sun_topicmodel` repository:  
+Create the python environment:
    ```bash
-   git clone https://github.com/TillRS/SUN_TopicModel
+   conda env create -f suntopic_env.yml
    ```
-
-2. Install the package locally:
-    ```bash
-    cd SUN_TopicModel
-    pip  install .
-    ```
 
 ## Data
 The required data, including the argument collections used in all experiments and the embeddings for fitting the topic model, are in the `data` directory. Specifically:
@@ -55,4 +48,4 @@ The scripts directory contains the following files:
 
 ## Citation
 If you use this code, please cite our work as follows:
-[Citation details will be added here]
+Saenger, T. R., Hinck, M., Grimmer, J., & Stewart, B. M. (2024). AutoPersuade: A Framework for Evaluating and Explaining Persuasive Arguments. arXiv preprint arXiv:2410.08917.
