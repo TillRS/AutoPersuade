@@ -48,4 +48,5 @@ The scripts directory contains the following files:
 
 ## Citation
 If you use this code, please cite our work as follows:
+
 Saenger, T. R., Hinck, M., Grimmer, J., & Stewart, B. M. (2024). AutoPersuade: A Framework for Evaluating and Explaining Persuasive Arguments. arXiv preprint arXiv:2410.08917.
