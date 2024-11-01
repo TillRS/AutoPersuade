@@ -8,7 +8,7 @@ The required Python environment is specified in `autpersuade_env.yml`. This incl
 
 Create the python environment:
    ```bash
-   conda env create -f suntopic_env.yml
+   conda env create -f autpersuade_env.yml
    ```
 
 ## Data
