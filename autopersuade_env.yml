@@ -259,5 +259,5 @@ dependencies:
   - zstd=1.5.5=h4f39d0f_0
   - pip:
       - joblib==1.4.2
-      - suntm==0.0.2
+      - suntm==0.0.3
 prefix: autopersuade
